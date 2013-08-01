@@ -11,10 +11,10 @@ class CreateNodes extends Simulation {
     .baseURL("http://localhost:7474")
     .acceptHeader("application/json")
 
-  val createNode = """{"query": "create me"}"""
+  val createNode = """{"query": "start n=node(0) foreach(id in range(1,1000) : create (n))"}"""
 
   val scn = scenario("Create Nodes")
-    .repeat(10000) {
+    .repeat(10) {
     exec(
       http("create node")
         .post("/db/data/cypher")

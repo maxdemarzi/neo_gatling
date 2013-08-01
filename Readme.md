@@ -13,6 +13,10 @@ Download and extract Gatling:
     Extract the file
     Copy the neo4j folder in this repository to user-files/simulations
     run bin/gatling.sh
+    First Get Root
+    Then Create Nodes
+    Then Create Relationships
+    Then Query Graph
 
 
 

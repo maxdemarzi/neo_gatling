@@ -9,11 +9,12 @@ class QueryGraph extends Simulation {
   val httpConf = httpConfig
     .baseURL("http://localhost:7474")
     .acceptHeader("application/json")
-    .responseInfoExtractor(response => {
-      println(response.getResponseBody)
-      Nil
-    })
-    .disableResponseChunksDiscarding
+    // Uncomment to see Response
+    // .responseInfoExtractor(response => {
+    //   println(response.getResponseBody)
+    //   Nil
+    //  })
+    // .disableResponseChunksDiscarding
 
   val rnd = new scala.util.Random
   val nodeRange = 1 to 100000
@@ -33,8 +34,7 @@ class QueryGraph extends Simulation {
           .header("X-Stream", "true")
           .body(cypherQuery)
           .asJSON
-          .check(status.is(200))
-          .check(jsonPath("data")))
+          .check(status.is(200)))
       .pause(0 milliseconds, 5 milliseconds)
   }
 
